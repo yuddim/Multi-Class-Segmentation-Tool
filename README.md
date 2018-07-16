@@ -7,6 +7,6 @@ python 3, pyQT5, scikit-image, opencv 3
 
 To start:
 
-run main.py
+run segmentation_tool.py
 
 convert_jpg_to_bmp.py - additional program to convert masked images from one folder to another folder
