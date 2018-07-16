@@ -47,6 +47,9 @@ class SegmenationTool(QMainWindow):
         self.FindBlobsButton = QPushButton("Detect")
         #self.CheckPathButton = QPushButton("Check Path")#CheckNumObjectsPath
         self.SaveButton = QPushButton("Save")
+        self.GotoButton = QPushButton("Go to image id:")
+        self.le_img_id = QLineEdit()
+
         self.LabelCoef = QLabel('мм in 1 pix:')
         self.le_Scale_Coef = QLineEdit()
 
@@ -71,6 +74,7 @@ class SegmenationTool(QMainWindow):
         self.SelectImDirButton.clicked.connect(self.selectImDirButtonClicked)
         self.SelectMkDirButton.clicked.connect(self.selectMkDirButtonClicked)
         self.SaveButton.clicked.connect(self.saveButtonClicked)
+        self.GotoButton.clicked.connect(self.GotoButtonClicked)
 
         #self.CheckPathButton.clicked.connect(self.CheckNumObjectsPath)
 
@@ -84,6 +88,8 @@ class SegmenationTool(QMainWindow):
         #self.hbox.addWidget(self.RecognizeFCNButton)
         self.hbox.addWidget(self.FindBlobsButton)
         self.hbox.addWidget(self.SaveButton)
+        self.hbox.addWidget(self.GotoButton)
+        self.hbox.addWidget(self.le_img_id)
 
         #self.hbox.addWidget(self.CheckPathButton)
 
@@ -417,6 +423,8 @@ class SegmenationTool(QMainWindow):
                 return
 
             self.image_file = self.file_dir + '/'+ self.filenames[0]
+            self.setWindowTitle('Multiclass segmentation tool v.1.0'+' | File: ' + self.filenames[0])
+            self.le_img_id.setText(str(0))
 
             self.load_image_file(self.image_file)
 
@@ -803,6 +811,8 @@ class SegmenationTool(QMainWindow):
         if(len(self.filenames)>self.file_index+1):
             self.file_index += 1
             self.image_file = self.file_dir + '/'+self.filenames[self.file_index]
+            self.setWindowTitle('Multiclass segmentation tool v.1.0' + ' | File: ' + self.filenames[self.file_index])
+            self.le_img_id.setText(str(self.file_index))
             self.load_image_file(self.image_file)
             self.statusBar().showMessage('> next image')
         else:
@@ -812,10 +822,24 @@ class SegmenationTool(QMainWindow):
         if (self.file_index > 0):
             self.file_index -= 1
             self.image_file = self.file_dir + '/' + self.filenames[self.file_index]
+            self.setWindowTitle('Multiclass segmentation tool v.1.0' + ' |  File: ' + self.filenames[self.file_index])
+            self.le_img_id.setText(str(self.file_index))
             self.load_image_file(self.image_file)
             self.statusBar().showMessage('< previous image')
         else:
             self.statusBar().showMessage('no previous image')
+
+    def GotoButtonClicked(self):
+        self.file_index = int(self.le_img_id.text())
+        if (self.file_index >= 0 and len(self.filenames)>self.file_index):
+            self.image_file = self.file_dir + '/' + self.filenames[self.file_index]
+            self.setWindowTitle('Multiclass segmentation tool v.1.0' + ' |  File: ' + self.filenames[self.file_index])
+            self.le_img_id.setText(str(self.file_index))
+            self.load_image_file(self.image_file)
+            self.statusBar().showMessage('find image')
+        else:
+            self.statusBar().showMessage('no image')
+
 
     #Загрузка изображения на форму
     def load_image_file(self, file_name):
