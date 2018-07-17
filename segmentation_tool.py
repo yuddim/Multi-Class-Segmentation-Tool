@@ -830,34 +830,36 @@ class SegmenationTool(QMainWindow):
             self.statusBar().showMessage('no previous image')
 
     def GotoButtonClicked(self):
-        self.file_index = int(self.le_img_id.text())
-        if (self.file_index >= 0 and len(self.filenames)>self.file_index):
-            self.image_file = self.file_dir + '/' + self.filenames[self.file_index]
-            self.setWindowTitle('Multiclass segmentation tool v.1.0' + ' |  File: ' + self.filenames[self.file_index])
-            self.le_img_id.setText(str(self.file_index))
-            self.load_image_file(self.image_file)
-            self.statusBar().showMessage('find image')
-        else:
-            self.statusBar().showMessage('no image')
+        if(self.flag):
+            self.file_index = int(self.le_img_id.text())
+            if (self.file_index >= 0 and len(self.filenames)>self.file_index):
+                self.image_file = self.file_dir + '/' + self.filenames[self.file_index]
+                self.setWindowTitle('Multiclass segmentation tool v.1.0' + ' |  File: ' + self.filenames[self.file_index])
+                self.le_img_id.setText(str(self.file_index))
+                self.load_image_file(self.image_file)
+                self.statusBar().showMessage('find image')
+            else:
+                self.statusBar().showMessage('no image')
 
 
     #Загрузка изображения на форму
     def load_image_file(self, file_name):
 
         self.img0 = cv2.imread(file_name, 1)
-        res_fname, res_extension = os.path.splitext(self.image_file)
-        res_fname = os.path.basename(res_fname)
-        mask_path = self.file_mk_dir+'/' + res_fname+'.bmp'
-        self.mask_inv = cv2.imread(mask_path,1)
-        if(type(self.mask_inv) is np.ndarray):
-            self.rez = (self.img0 * (self.mask_inv / 255)).astype(np.uint8)
-        else:
-            self.rez = self.img0
-            self.mask_inv = np.ones(self.img0.shape, dtype='uint8')*255
+        if(type(self.img0) is np.ndarray):
+            res_fname, res_extension = os.path.splitext(self.image_file)
+            res_fname = os.path.basename(res_fname)
+            mask_path = self.file_mk_dir+'/' + res_fname+'.bmp'
+            self.mask_inv = cv2.imread(mask_path,1)
+            if(type(self.mask_inv) is np.ndarray):
+                self.rez = (self.img0 * (self.mask_inv / 255)).astype(np.uint8)
+            else:
+                self.rez = self.img0
+                self.mask_inv = np.ones(self.img0.shape, dtype='uint8')*255
 
-        self.flag = True
-        # self.rez = cv2.bitwise_and(self.img0, self.img0, mask=self.mask_inv)
-        self.print_image_on_label(self.rez, self.imageLabel)
+            self.flag = True
+            # self.rez = cv2.bitwise_and(self.img0, self.img0, mask=self.mask_inv)
+            self.print_image_on_label(self.rez, self.imageLabel)
 
     # Загрузка изображения на форму
     def load_just_image_file(self, file_name):
