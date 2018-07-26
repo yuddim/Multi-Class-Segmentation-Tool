@@ -49,7 +49,7 @@ Next, you need to **clone files from [repository](https://github.com/yuddim/mult
 
 **Example of program operation:**
 
-![alt text](1.jpg)
+![alt text](readme_docs/1.jpg)
 ----------------------------------
 
 [![Video showing the work with the program](http://img.youtube.com/vi/bjM5I21gQFw/0.jpg)](http://www.youtube.com/watch?v=bjM5I21gQFw "Segmentation tool")
