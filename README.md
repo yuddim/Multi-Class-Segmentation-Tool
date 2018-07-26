@@ -1,4 +1,4 @@
-# multi_class_segmentation_tool
+# Multi-Class-Segmentation-Tool
 ## Segmentation tool with GUI based on pyQT5 and OpenCV for Python 3
 
 For the convenience of starting the examples, we recommend you to install Anaconda and PyCharm packages on your PC.
