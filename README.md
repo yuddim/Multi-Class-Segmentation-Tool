@@ -51,8 +51,5 @@ Next, you need to **clone files from [repository](https://github.com/yuddim/mult
 
 ![alt text](1.jpg)
 ----------------------------------
-[Video showing the work with the program](https://www.youtube.com/watch?v=bjM5I21gQFw)
-
-[![Video showing the work with the program](https://i9.ytimg.com/vi/bjM5I21gQFw/mq3.jpg?sqp=CNjB4toF&rs=AOn4CLAl9VX6nNk0mjbAnuoHcSOHTqQbFw)](https://www.youtube.com/watch?v=bjM5I21gQFw)
 
 [![Video showing the work with the program](http://img.youtube.com/vi/bjM5I21gQFw/0.jpg)](http://www.youtube.com/watch?v=bjM5I21gQFw "Segmentation tool")
