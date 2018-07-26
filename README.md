@@ -44,6 +44,7 @@ pyQT5: [link to the official website.](https://riverbankcomputing.com/software/p
 
 --------------------------------------
 
+
 Next, you need to **clone files from [repository](https://github.com/yuddim/multi_class_segmentation_tool)** and run the program in 
 **PyCharm**. 
 
@@ -54,4 +55,5 @@ Next, you need to **clone files from [repository](https://github.com/yuddim/mult
 --------------------------------------
 
 **Youtube Video of Segmentation-Tool usage by Maxim Shchendrygin:**
+
 [![Video showing the work with the program](http://img.youtube.com/vi/bjM5I21gQFw/0.jpg)](http://www.youtube.com/watch?v=bjM5I21gQFw "Segmentation tool")
